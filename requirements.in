@@ -1,2 +1,7 @@
-requests
-python_binance>=1.0.28
+python_binance
+
+ccxt
+backtrader
+pandas
+numpy
+matplotlib

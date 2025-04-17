@@ -4,20 +4,42 @@
 #
 #    pip-compile requirements.in
 #
+aiodns==3.2.0
+    # via ccxt
 aiohappyeyeballs==2.6.1
     # via aiohttp
 aiohttp==3.11.16
-    # via python-binance
+    # via
+    #   ccxt
+    #   python-binance
 aiosignal==1.3.2
     # via aiohttp
 attrs==25.3.0
     # via aiohttp
+backtrader==1.9.78.123
+    # via -r requirements.in
+ccxt==4.4.30
+    # via -r requirements.in
 certifi==2025.1.31
-    # via requests
+    # via
+    #   ccxt
+    #   requests
+cffi==1.17.1
+    # via
+    #   cryptography
+    #   pycares
 charset-normalizer==3.4.1
     # via requests
+contourpy==1.3.2
+    # via matplotlib
+cryptography==44.0.2
+    # via ccxt
+cycler==0.12.1
+    # via matplotlib
 dateparser==1.2.1
     # via python-binance
+fonttools==4.57.0
+    # via matplotlib
 frozenlist==1.5.0
     # via
     #   aiohttp
@@ -26,32 +48,63 @@ idna==3.10
     # via
     #   requests
     #   yarl
+kiwisolver==1.4.8
+    # via matplotlib
+matplotlib==3.10.1
+    # via -r requirements.in
 multidict==6.4.3
     # via
     #   aiohttp
     #   yarl
+numpy==2.2.4
+    # via
+    #   -r requirements.in
+    #   contourpy
+    #   matplotlib
+    #   pandas
+packaging==24.2
+    # via matplotlib
+pandas==2.2.3
+    # via -r requirements.in
+pillow==11.2.1
+    # via matplotlib
 propcache==0.3.1
     # via
     #   aiohttp
     #   yarl
+pycares==4.6.0
+    # via aiodns
+pycparser==2.22
+    # via cffi
 pycryptodome==3.22.0
     # via python-binance
+pyparsing==3.2.3
+    # via matplotlib
 python-binance==1.0.28
     # via -r requirements.in
 python-dateutil==2.9.0.post0
-    # via dateparser
+    # via
+    #   dateparser
+    #   matplotlib
+    #   pandas
 pytz==2025.2
-    # via dateparser
+    # via
+    #   dateparser
+    #   pandas
 regex==2024.11.6
     # via dateparser
 requests==2.32.3
     # via
-    #   -r requirements.in
+    #   ccxt
     #   python-binance
 six==1.17.0
     # via
     #   python-binance
     #   python-dateutil
+typing-extensions==4.13.2
+    # via ccxt
+tzdata==2025.2
+    # via pandas
 tzlocal==5.3.1
     # via dateparser
 urllib3==2.4.0
@@ -59,4 +112,9 @@ urllib3==2.4.0
 websockets==15.0.1
     # via python-binance
 yarl==1.19.0
-    # via aiohttp
+    # via
+    #   aiohttp
+    #   ccxt
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
