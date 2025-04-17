@@ -1,5 +1,6 @@
-from strategies.base import BaseStrategy
 import pandas as pd
+
+from .base_strategy import BaseStrategy
 
 class MovingAverageStrategy(BaseStrategy):
     def prepare_data(self, raw_data):

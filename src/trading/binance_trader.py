@@ -1,7 +1,8 @@
 from binance.client import Client
 import pandas as pd
-from base import BaseTrader
 import os
+
+from .base_trader import BaseTrader
 
 class BinanceTrader(BaseTrader):
     def __init__(self, strategy):

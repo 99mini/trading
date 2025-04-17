@@ -1,4 +1,4 @@
-from .base import BaseStrategy
+from .base_strategy import BaseStrategy
 
 class VolatilityBreakoutStrategy(BaseStrategy):
     def __init__(self, k=0.5):

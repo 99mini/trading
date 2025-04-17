@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import Type
-from strategies.base import BaseStrategy
+
+from strategies import BaseStrategy
 
 class Backtester:
     def __init__(self, strategy: Type[BaseStrategy]):
