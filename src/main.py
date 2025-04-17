@@ -4,6 +4,10 @@ import os
 from strategies import MovingAverageStrategy, VolatilityBreakoutStrategy
 from backtesting import Backtester
 
+coins = ['BTCUSDT', 'ETHUSDT']
+
+target_coin = coins[1]
+
 def main():
     # 1. 과거 데이터 로드
 
@@ -12,7 +16,7 @@ def main():
         os.path.dirname(__file__),
         'assets',
         'data',
-        'historical_data.csv'
+        f'{target_coin}.csv'
     )
 
     for strategy in [MovingAverageStrategy, VolatilityBreakoutStrategy]:
@@ -28,6 +32,7 @@ def main():
         # 4. 결과 출력
         print("\n🔎 백테스팅 결과 리포트")
         print(f"전략 이름: {strategy.__name__}")
+        print(f"투자 코인: {target_coin}")
         print(f"테스트 기간: {results['duration'][0]} ~ {results['duration'][-1]}")
         print(f"총 거래 횟수: {results['total_trades']}회")
         print(f"승률: {results['win_rate']:.2f}%")
