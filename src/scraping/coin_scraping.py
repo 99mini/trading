@@ -39,7 +39,7 @@ def get_historical_klines(symbol, interval, start_str, end_str=None):
 
 # 1년치 BTC 데이터 수집
 symbol = 'BTCUSDT'
-interval = '1d'
+interval = '5m'
 start_date = (datetime.datetime.now() - datetime.timedelta(days=365)).strftime('%Y-%m-%d')
 end_date = datetime.datetime.now().strftime('%Y-%m-%d')
 
@@ -57,8 +57,10 @@ for col in ['open_time', 'close_time']:
 
 # 저장
 
+file_name = f'{symbol}_{interval}.csv'
+
 root_dir = os.path.dirname(os.path.abspath(__file__))
-data_dir = os.path.join(root_dir, '..', 'assets', 'data', f'{symbol}.csv')
+data_dir = os.path.join(root_dir, '..', 'assets', 'data', file_name)
 
 df.to_csv(data_dir, index=False)
 

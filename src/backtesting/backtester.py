@@ -31,21 +31,21 @@ class Backtester:
                 if current_position is None:
                     entry_price = processed_data['open'].iloc[i]
                     current_position = "short"
-                    print(f"Open Short position at {processed_data['open'].iloc[i]}")
+                    # print(f"Open Short position at {processed_data['open'].iloc[i]}")
                 elif current_position == "long":
                     exit_price = processed_data['close'].iloc[i]
                     returns.append(exit_price - entry_price)
-                    print(f"Sell at {processed_data['close'].iloc[i]} | Profit: {exit_price - entry_price}")
+                    # print(f"Sell at {processed_data['close'].iloc[i]} | Profit: {exit_price - entry_price}")
                     current_position = None
             if signal == "buy":
                 if current_position is None:
                     entry_price = processed_data['open'].iloc[i]
                     current_position = "long"
-                    print(f"Open Long position at {processed_data['open'].iloc[i]}")
+                    # print(f"Open Long position at {processed_data['open'].iloc[i]}")
                 elif current_position == "short":
                     exit_price = processed_data['close'].iloc[i]
                     returns.append(entry_price - exit_price)
-                    print(f"Buy at {processed_data['close'].iloc[i]} | Profit: {entry_price - exit_price}")
+                    # print(f"Buy at {processed_data['close'].iloc[i]} | Profit: {entry_price - exit_price}")
                     current_position = None
         return {
             "signals": signals,
