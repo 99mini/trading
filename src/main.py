@@ -29,13 +29,9 @@ def main():
     print(f"테스트 기간: {results['duration'][0]} ~ {results['duration'][-1]}")
     print(f"총 거래 횟수: {results['total_trades']}회")
     print(f"승률: {results['win_rate']:.2f}%")
-    print(f"최종 수익률: {results['total_return']:.2f}%")
+    print(f"총 수익금: {results['total_return']:.2f}")
     print(f"샤프 지수: {results['sharpe_ratio']:.2f}")
     print(f"최대 손실률: {results['max_drawdown']:.2f}%")
-
-    print("\n📈 거래 신호")
-    for i, signal in enumerate(results['signals']):
-        print(f"거래 {i+1}: {signal}")
     
     # 5. 결과 시각화 (예시)
     # pd.DataFrame({'returns': results['returns']}).cumsum().plot()
