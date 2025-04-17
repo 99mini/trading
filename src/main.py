@@ -1,12 +1,44 @@
-from binance.client import Client
-from binance.enums import *
+import pandas as pd
 import os
 
-# 환경변수 또는 직접 입력
-api_key = os.getenv('BINANCE_API_KEY', 'your_api_key')
-api_secret = os.getenv('BINANCE_API_SECRET', 'your_secret_key')
+from strategies import MovingAverageStrategy
+from backtesting import Backtester
 
-client = Client(api_key=api_key, api_secret=api_secret)
+def main():
+    # 1. 과거 데이터 로드
 
-tickers = client.get_all_tickers()
-print(type(tickers), len(tickers))
+
+    data_path = os.path.join(
+        os.path.dirname(__file__),
+        'assets',
+        'data',
+        'historical_data.csv'
+    )
+    
+    # 2. 백테스팅 설정
+    backtester = Backtester(MovingAverageStrategy)
+
+    backtester.load_data(data_path)
+    
+    # 3. 백테스팅 실행
+    results = backtester.run()
+    
+    # 4. 결과 출력
+    print("\n🔎 백테스팅 결과 리포트")
+    print(f"전략 이름: {MovingAverageStrategy.__name__}")
+    print(f"테스트 기간: {results['duration'][0]} ~ {results['duration'][-1]}")
+    print(f"총 거래 횟수: {results['total_trades']}회")
+    print(f"승률: {results['win_rate']:.2f}%")
+    print(f"최종 수익률: {results['total_return']:.2f}%")
+    print(f"샤프 지수: {results['sharpe_ratio']:.2f}")
+    print(f"최대 손실률: {results['max_drawdown']:.2f}%")
+
+    print("\n📈 거래 신호")
+    for i, signal in enumerate(results['signals']):
+        print(f"거래 {i+1}: {signal}")
+    
+    # 5. 결과 시각화 (예시)
+    # pd.DataFrame({'returns': results['returns']}).cumsum().plot()
+
+if __name__ == "__main__":
+    main()

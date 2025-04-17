@@ -11,3 +11,8 @@ class BaseStrategy(ABC):
     def prepare_data(self, raw_data: pd.DataFrame) -> pd.DataFrame:
         """백테스팅/트레이딩에 사용할 데이터 전처리"""
         pass
+
+    @abstractmethod
+    def __name__(self):
+        """전략 이름"""
+        return self.__class__.__name__

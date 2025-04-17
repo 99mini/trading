@@ -14,3 +14,6 @@ class MovingAverageStrategy(BaseStrategy):
         if latest['MA20'] > latest['MA50']:
             return "buy"
         return "sell"
+    
+    def __name__(self):
+        return "MovingAverageStrategy"
