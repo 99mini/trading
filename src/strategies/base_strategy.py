@@ -4,7 +4,10 @@ import pandas as pd
 class BaseStrategy(ABC):
     @abstractmethod
     def generate_signal(self, data: pd.DataFrame) -> str:
-        """전략 신호 생성 메서드"""
+        """
+        전략 신호 생성 메서드
+        :return: `buy`| `sell` | `hold`
+        """
         pass
     
     @abstractmethod
